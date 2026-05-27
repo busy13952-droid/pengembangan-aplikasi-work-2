@@ -1,0 +1,771 @@
+/* =====================================================
+   STYLE.CSS
+   Website AyoSholat
+   Semua warna utama diletakkan di :root agar mudah diganti
+===================================================== */
+
+:root {
+  /* Warna utama website */
+  --primary-color: #79c7d6;
+  --secondary-color: #f8eedb;
+  --accent-color: #ffffff;
+
+  /* Warna background */
+  --background-main: #e9f9fc;
+  --background-section: #fff7e8;
+  --background-card: #ffffff;
+
+  /* Warna teks */
+  --text-main: #164e63;
+  --text-secondary: #0f2f4a;
+  --text-muted: #5d7180;
+
+  /* Warna tambahan */
+  --border-color: #dcecef;
+  --shadow-color: rgba(15, 47, 74, 0.12);
+
+  /* Ukuran dan efek */
+  --max-width: 1120px;
+  --radius-small: 12px;
+  --radius-medium: 18px;
+  --radius-large: 28px;
+  --transition: 0.3s ease;
+}
+
+/* ================= RESET DASAR ================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-main);
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ================= KELAS GLOBAL ================= */
+
+.container {
+  width: min(100% - 32px, var(--max-width));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 90px 0;
+}
+
+.section-heading {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 48px;
+}
+
+.section-heading h2,
+.solution-content h2,
+.access-box h2 {
+  color: var(--text-secondary);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+
+.section-heading p,
+.solution-content p,
+.access-box p {
+  color: var(--text-muted);
+}
+
+.section-label,
+.badge {
+  display: inline-block;
+  background-color: var(--secondary-color);
+  color: var(--text-secondary);
+  padding: 7px 15px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-secondary);
+  box-shadow: 0 12px 28px var(--shadow-color);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px var(--shadow-color);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-secondary);
+  border-color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(233, 249, 252, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav-wrapper {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  font-weight: 600;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary-color);
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 999px;
+}
+
+/* Tombol hamburger disembunyikan di desktop */
+.menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 3px;
+  background-color: var(--text-secondary);
+  margin: 5px auto;
+  border-radius: 999px;
+  transition: var(--transition);
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  min-height: calc(100vh - 76px);
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(circle at top left, rgba(121, 199, 214, 0.35), transparent 30%),
+    var(--background-main);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 48px;
+}
+
+.hero-text h1 {
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 1;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+
+.hero-text h2 {
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  color: var(--text-main);
+  line-height: 1.35;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.hero-image {
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: var(--radius-large);
+  box-shadow: 0 22px 50px var(--shadow-color);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  border-radius: var(--radius-medium);
+  background-color: #eeeeee;
+}
+
+/* ================= MASALAH ================= */
+
+.problem-section {
+  background-color: var(--accent-color);
+}
+
+.card-grid,
+.feature-grid,
+.team-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.card-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.info-card,
+.feature-card,
+.team-card {
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-medium);
+  padding: 28px;
+  box-shadow: 0 14px 34px var(--shadow-color);
+  transition: var(--transition);
+}
+
+.info-card:hover,
+.feature-card:hover,
+.team-card:hover {
+  transform: translateY(-8px);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background-color: var(--primary-color);
+  color: var(--text-secondary);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.info-card h3,
+.feature-card h3,
+.team-card h3 {
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.info-card p,
+.feature-card p,
+.team-card p {
+  color: var(--text-muted);
+}
+
+.target-box {
+  margin-top: 32px;
+  background-color: var(--background-section);
+  border-left: 6px solid var(--primary-color);
+  padding: 26px;
+  border-radius: var(--radius-medium);
+}
+
+.target-box h3 {
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+/* ================= SOLUSI ================= */
+
+.solution-section {
+  background-color: var(--background-section);
+}
+
+.solution-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+  gap: 48px;
+}
+
+.solution-image {
+  background-color: var(--accent-color);
+  padding: 18px;
+  border-radius: var(--radius-large);
+  box-shadow: 0 22px 46px var(--shadow-color);
+}
+
+.solution-image img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: var(--radius-medium);
+  background-color: #eeeeee;
+}
+
+.benefit-list {
+  list-style: none;
+  margin-top: 22px;
+}
+
+.benefit-list li {
+  background-color: var(--accent-color);
+  margin-bottom: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-small);
+  color: var(--text-secondary);
+  border-left: 4px solid var(--primary-color);
+}
+
+/* ================= FITUR ================= */
+
+.features-section {
+  background-color: var(--accent-color);
+}
+
+.feature-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  background-color: var(--secondary-color);
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  margin-bottom: 18px;
+}
+
+/* ================= AKSES PRODUK ================= */
+
+.access-section {
+  background:
+    linear-gradient(135deg, rgba(121, 199, 214, 0.95), rgba(248, 238, 219, 0.95));
+}
+
+.access-box {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 44px;
+  border-radius: var(--radius-large);
+  box-shadow: 0 22px 48px var(--shadow-color);
+}
+
+.access-buttons {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* ================= TIM ================= */
+
+.team-section {
+  background-color: var(--background-main);
+}
+
+.team-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.team-card {
+  text-align: center;
+}
+
+.team-card img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  border: 6px solid var(--secondary-color);
+  background-color: #eeeeee;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+  background-color: var(--text-secondary);
+  color: var(--accent-color);
+  padding: 38px 0;
+  text-align: center;
+}
+
+.footer h3 {
+  margin-bottom: 8px;
+}
+
+.footer p {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 4px;
+}
+
+/* ================= FALLBACK GAMBAR ================= */
+
+.image-fallback {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  min-height: 180px;
+  background-color: #eeeeee;
+  color: #777777;
+  border-radius: var(--radius-medium);
+  padding: 20px;
+  font-weight: 700;
+}
+
+/* ================= ANIMASI SCROLL ================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: 0.7s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =====================================================
+   HALAMAN BELAJAR.HTML
+===================================================== */
+
+.learning-page {
+  background-color: var(--background-main);
+}
+
+.learning-header {
+  padding: 90px 0 60px;
+  background:
+    radial-gradient(circle at top right, rgba(121, 199, 214, 0.35), transparent 30%),
+    var(--background-main);
+}
+
+.learning-header-content {
+  max-width: 900px;
+}
+
+.learning-header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+}
+
+.learning-header p {
+  color: var(--text-muted);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.back-link:hover {
+  color: var(--primary-color);
+}
+
+.learning-layout {
+  display: grid;
+  grid-template-columns: 310px 1fr;
+  gap: 28px;
+  align-items: start;
+  padding-bottom: 80px;
+}
+
+.learning-sidebar {
+  position: sticky;
+  top: 100px;
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-medium);
+  padding: 24px;
+  box-shadow: 0 14px 32px var(--shadow-color);
+}
+
+.learning-sidebar h2 {
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+  font-size: 1.2rem;
+}
+
+.chapter-menu {
+  display: grid;
+  gap: 12px;
+}
+
+.chapter-button {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background-color: var(--secondary-color);
+  color: var(--text-secondary);
+  padding: 14px;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.chapter-button:hover,
+.chapter-button.active {
+  background-color: var(--primary-color);
+}
+
+.learning-content {
+  background-color: var(--background-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-medium);
+  padding: 32px;
+  box-shadow: 0 14px 32px var(--shadow-color);
+}
+
+.learning-content h2 {
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.learning-content h3 {
+  color: var(--text-secondary);
+  margin: 24px 0 10px;
+}
+
+.learning-content p {
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.subchapter-list {
+  padding-left: 20px;
+  color: var(--text-main);
+  margin-bottom: 24px;
+}
+
+.material-image {
+  margin: 24px 0;
+  border-radius: var(--radius-medium);
+  overflow: hidden;
+}
+
+.material-image img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  background-color: #eeeeee;
+}
+
+.embed-placeholder {
+  margin-top: 22px;
+  min-height: 230px;
+  border: 2px dashed var(--primary-color);
+  border-radius: var(--radius-medium);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--text-muted);
+  padding: 24px;
+  background-color: var(--background-section);
+}
+
+/* ================= RESPONSIVE TABLET ================= */
+
+@media (max-width: 900px) {
+  .hero-grid,
+  .solution-grid,
+  .learning-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .card-grid,
+  .feature-grid,
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-image img,
+  .solution-image img {
+    height: 360px;
+  }
+
+  .learning-sidebar {
+    position: static;
+  }
+}
+
+/* ================= RESPONSIVE MOBILE ================= */
+
+@media (max-width: 680px) {
+  .section {
+    padding: 70px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 76px;
+    left: 16px;
+    right: 16px;
+    background-color: var(--accent-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-medium);
+    padding: 18px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    box-shadow: 0 18px 36px var(--shadow-color);
+    display: none;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 12px;
+    border-radius: var(--radius-small);
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: var(--secondary-color);
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-buttons,
+  .access-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .card-grid,
+  .feature-grid,
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-image img,
+  .solution-image img {
+    height: 280px;
+  }
+
+  .access-box,
+  .learning-content {
+    padding: 26px;
+  }
+}
